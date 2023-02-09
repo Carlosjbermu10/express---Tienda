@@ -1,3 +1,4 @@
+.gitignore
 node_modules
 /src/env/
 /src/database/bd.sql
