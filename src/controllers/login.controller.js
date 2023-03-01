@@ -1,4 +1,3 @@
-import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 
 import { SearchUser, //Servicio que busca si ya existe un usuario
@@ -7,10 +6,12 @@ import { SearchUser, //Servicio que busca si ya existe un usuario
     returnID //Servicio que devuelve los datos del usuario por el id
 } from '../services/login.services.js';
 
-import { JWT_SECRET,JWT_TIEMPO_EXPIRA,JWT_COOKIE_EXPIRES} from '../config.js';
+import { TokenSign } from '../helpers/GenerateToken.js';
+
+import { cookiesOp } from '../helpers/GenerateCookie.js';
+
 
 export const getLogin = async (req,res) => {
-
     res.send("login")
 }
 
@@ -44,43 +45,19 @@ export const postLogin = async (req,res) => {
         
         //Inicio de sesion
         const datos = await returnUser(body.user)
-        const id = datos[0].idusers
         //se crea el token
-        const token = jwt.sign({id:id},JWT_SECRET,{expiresIn:JWT_TIEMPO_EXPIRA})
-        const cookiesOptions = { 
-            expiresIn: new Date (Date.now() + JWT_COOKIE_EXPIRES * 24 * 60 * 60 * 1000),
-            httpOnly: true
-        }
+        const token = await TokenSign(datos[0])
+        const cookiesOptions = cookiesOp
         res.cookie('jwt', token, cookiesOptions)
         return res.send({ status:"ok",
             description:"usuario logueado exitosamente",
             data:datos,
             token:token})
 
-
     } catch (error) {
         console.log(error)
     }
 
-}
-
-export const isAuthenticated = async (req,res, next) => {
-
-    if (req.cookies.jwt) {
-        try {
-        
-            const decodificada = await promisify(jwt.verify)(req.cookies.jwt, JWT_SECRET)
-            const datos = await returnID(decodificada.id)
-            if (!datos) {return next()}
-            req.user = datos[0]
-            return next()
-        } catch (error) {
-            console.log(error)
-        }    
-    }else{
-        res.redirect('/login')
-    }
-    
 }
 
 export const getLogout = async (req,res, next) => {

@@ -19,14 +19,16 @@ export const RegisterUser = async (regi) => {
     const name = regi.name
     const user = regi.user
     const password = regi.password
+    const rol = regi.rol
 
-    const [rows] = await pool.query('INSERT INTO users (name, user, password) VALUES(?,?,?)',
-    [name, user, password])
+    const [rows] = await pool.query('INSERT INTO users (name, user, password, rol) VALUES(?,?,?,?)',
+    [name, user, password, rol])
     const result = {
         id: rows.insertId,
         name,
         user,
         password,
+        rol,
     }
     return result
 }

@@ -12,7 +12,7 @@ export const BD_DATABASE = process.env.DB_DATABASE || 'bd_tienda'
 export const BD_PORT = process.env.DB_PORT || 3306
 
 //jwt
-export const JWT_SECRET = process.env.JWT_SECRET || '12345 '
+export const JWT_SECRET = process.env.JWT_SECRET || '12345'
 export const JWT_TIEMPO_EXPIRA = process.env.JWT_TIEMPO_EXPIRA || '7d'
 export const JWT_COOKIE_EXPIRES = process.env.JWT_COOKIE_EXPIRES || '90'
 
