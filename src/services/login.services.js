@@ -25,6 +25,6 @@ export const returnUser = async (user) => {
 
 //Servicio que devuelve los datos del usuario por el id
 export const returnID = async (id) => {
-    const [rows] = await pool.query('SELECT * FROM users WHERE idusers = ?', [id])
+    const [rows] = await pool.query('SELECT * FROM users WHERE id_users = ?', [id])
     return rows
 }

@@ -6,7 +6,7 @@ import { JWT_SECRET,JWT_TIEMPO_EXPIRA } from '../config.js';
 export const TokenSign = async (user) => {
     return jwt.sign(
         {
-            id: user.idusers,
+            id: user.id_users,
             rol: user.rol
         },
         JWT_SECRET,
