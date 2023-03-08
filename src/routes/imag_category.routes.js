@@ -1,5 +1,5 @@
 import { Router} from 'express';
-import { getRegister,postRegister } from '../controllers/imag_category.controller.js';
+import { getImagCategory, postImagCategory, deleteImagCategory } from '../controllers/imag_category.controller.js';
 
 //IMPORTAMOS LOS MIDDLWARE
 
@@ -8,7 +8,8 @@ import { upload } from '../middlware/multer.js';
 
 const router = Router()
 
-router.get('/imag_category', getRegister) 
-router.post('/add_imag_category/:id',upload ,postRegister)
+router.get('/imag_category', getImagCategory) 
+router.post('/imag_category/add/:id',upload ,postImagCategory)
+router.delete('/imag_category/delete/:id', deleteImagCategory) 
 
 export default router 

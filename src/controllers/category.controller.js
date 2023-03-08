@@ -1,12 +1,12 @@
 import { SearchCategory,RegisterCategory } from '../services/category.services.js';
 
-export const getRegister = async (req,res) => {
+export const getCategory = async (req,res) => {
 
     res.send("Registrar Categoria")
 }
 
 
-export const postRegister = async (req,res) => {
+export const postCategory = async (req,res) => {
 
     try {
         
