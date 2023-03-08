@@ -1,10 +1,9 @@
 import bcryptjs from 'bcryptjs';
-import { getSerRegister,RegisterUser,SearchUser } from '../services/register.services.js';
+import { RegisterUser,SearchUser } from '../services/register.services.js';
 
 export const getRegister = (req,res) => {
     
-    getSerRegister
-    res.send("Registrar")
+    res.send("Registrar Usuario")
 }
 
 export const postRegister = async (req,res) => {

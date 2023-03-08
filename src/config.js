@@ -1,4 +1,4 @@
-import {config} from 'dotenv';
+import { config } from 'dotenv';
 
 config({path:'./env/.env'})
 
@@ -22,4 +22,9 @@ export const BD_PORT = process.env.DB_PORT || 5830
 export const JWT_SECRET = process.env.JWT_SECRET || '12345'
 export const JWT_TIEMPO_EXPIRA = process.env.JWT_TIEMPO_EXPIRA || '7d'
 export const JWT_COOKIE_EXPIRES = process.env.JWT_COOKIE_EXPIRES || '90'
+
+//cloudinary
+export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'dqcm3kikg'
+export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY || '676936831363949'
+export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET || 'B6AtGOemb94mzJpJo5fMRH5orj4'
 

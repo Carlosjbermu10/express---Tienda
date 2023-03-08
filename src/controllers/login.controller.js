@@ -1,5 +1,3 @@
-import { promisify } from 'util';
-
 import { SearchUser, //Servicio que busca si ya existe un usuario
     ValidatePassword, //Servicio que valida la contraseña del usuario con la de la bd
     returnUser, //Servicio que devuelve los datos del usuario que se loguea
@@ -63,6 +61,7 @@ export const postLogin = async (req,res) => {
 export const getLogout = async (req,res, next) => {
 
     res.clearCookie('jwt')
-    return res.redirect('/')
+    //return res.redirect('/')
+    return res.send("seccion cerrada")
 
 }
