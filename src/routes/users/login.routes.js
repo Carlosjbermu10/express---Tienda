@@ -1,16 +1,16 @@
 import { Router} from 'express';
-import { getLogin,postLogin,getLogout } from '../controllers/login.controller.js';
+import { getLogin, postLogin, getLogout } from '../../controllers/users/login.controller.js';
 
 //IMPORTAMOS LOS MIDDLWARE
 
 //middlware de auth
-import { checkAuth } from '../middlware/auth.js';
-import { checkRolAdmin, checkRolUser } from '../middlware/roleAuth.js';
+import { checkAuth } from '../../middlware/auth.js';
+import { checkRolAdmin, checkRolUser } from '../../middlware/roleAuth.js';
 //middlware de multer
-import { upload } from '../middlware/multer.js';
+import { upload } from '../../middlware/multer.js';
 
 //IMPORTAMOS E UTILIZAMOS CLOUDINARY
-import { cloud } from '../helpers/cloudinary.js';
+import { cloud } from '../../helpers/cloudinary.js';
 import cloudinary from 'cloudinary';
 
 const router = Router()

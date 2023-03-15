@@ -1,4 +1,4 @@
-import { pool } from '../database/db.js';
+import { pool } from '../../database/db.js';
 import bcryptjs from 'bcryptjs';
 
 //Servicio que busca si ya existe un usuario

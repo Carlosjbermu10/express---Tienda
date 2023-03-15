@@ -5,9 +5,9 @@ import cookieParser from 'cookie-parser';
 //importamos las variables de entorno
 import { PORT } from './config.js';
 
-//importamos las rutas
-import loginRoutes from './routes/login.routes.js'
-import RegisterRoutes from './routes/register.router.js'
+//importamos las rutas 
+import loginRoutes from './routes/users/login.routes.js'
+import RegisterRoutes from './routes/users/register.router.js'
 import categoryRoutes from './routes/category.routes.js';
 import imag_categoryRoutes from './routes/imag_category.routes.js';
 import productRoutes from './routes/product.routes.js';

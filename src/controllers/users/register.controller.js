@@ -1,5 +1,5 @@
 import bcryptjs from 'bcryptjs';
-import { RegisterUser,SearchUser } from '../services/register.services.js';
+import { RegisterUser, SearchUser } from '../../services/users/register.services.js';
 
 export const getRegister = (req,res) => {
     

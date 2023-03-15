@@ -2,11 +2,11 @@ import { SearchUser, //Servicio que busca si ya existe un usuario
     ValidatePassword, //Servicio que valida la contraseña del usuario con la de la bd
     returnUser, //Servicio que devuelve los datos del usuario que se loguea
     returnID //Servicio que devuelve los datos del usuario por el id
-} from '../services/login.services.js';
+} from '../../services/users/login.services.js'; 
 
-import { TokenSign } from '../helpers/GenerateToken.js';
+import { TokenSign } from '../../helpers/GenerateToken.js';
 
-import { cookiesOp } from '../helpers/GenerateCookie.js';
+import { cookiesOp } from '../../helpers/GenerateCookie.js';
 
 
 export const getLogin = async (req,res) => {
