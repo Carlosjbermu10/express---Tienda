@@ -1,8 +1,8 @@
 import { config } from 'dotenv';
 
-config({path:'./env/.env'})
+config({path:'env/.env'})
 
-export const PORT = process.env.PORT || 3000
+export const PORT = process.env.PORT || 3000 
 /*
 //bd
 export const BD_USER = process.env.BD_USER || 'root'
@@ -13,18 +13,20 @@ export const BD_PORT = process.env.DB_PORT || 3306
 */
 //bd
 export const BD_USER = process.env.BD_USER || 'root'
-export const BD_PASSWORD = process.env.DB_PASSWORD || 'hjDKssYxLmkz5lqMQzez'
-export const BD_HOST = process.env.DB_HOST || 'containers-us-west-181.railway.app'
-export const BD_DATABASE = process.env.DB_DATABASE || 'railway'
-export const BD_PORT = process.env.DB_PORT || 5830
+export const BD_PASSWORD = process.env.DB_PASSWORD 
+export const BD_HOST = process.env.DB_HOST 
+export const BD_DATABASE = process.env.DB_DATABASE 
+export const BD_PORT = process.env.DB_PORT 
 
 //jwt
-export const JWT_SECRET = process.env.JWT_SECRET || '12345'
-export const JWT_TIEMPO_EXPIRA = process.env.JWT_TIEMPO_EXPIRA || '7d'
-export const JWT_COOKIE_EXPIRES = process.env.JWT_COOKIE_EXPIRES || '90'
+export const JWT_SECRET = process.env.JWT_SECRET 
+export const JWT_TIEMPO_EXPIRA = process.env.JWT_TIEMPO_EXPIRA 
+export const JWT_COOKIE_EXPIRES = process.env.JWT_COOKIE_EXPIRES 
 
 //cloudinary
-export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME || 'dqcm3kikg'
-export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY || '676936831363949'
-export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET || 'B6AtGOemb94mzJpJo5fMRH5orj4'
+export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME 
+export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY 
+export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET 
+
+//console.log(process.env)
 

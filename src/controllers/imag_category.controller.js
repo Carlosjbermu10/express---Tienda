@@ -1,7 +1,7 @@
 import fs from 'fs-extra';
 
 import { SearchCategoryId, RegisterImagCategory, SearchImagCategoryId, ReturnImagCategoryId_public,
-    DeleteImagCategoryId,} from '../services/imag_category.services.js';
+    DeleteImagCategoryId} from '../services/imag_category.services.js';
 
 import { uploadClo, deleteClo } from '../helpers/cloudinary.js';
 
@@ -18,8 +18,10 @@ export const postImagCategory = async (req,res) => {
 
     try {
         
-        //se recibe la imagen en el req.file
+        // se reciben la variable que viene por parametros
         const id_categ = req.params.id
+        
+        //se recibe la imagen en el req.file
         if (!req.file) {
             return res.send({ status:"mal",
             description:"Tiene que seleccionar una imagen",

@@ -5,7 +5,7 @@ export const getSerRegister = async() => {
     
 }
 
-//Servicio que busca si ya existe una Categoria
+//Servicio que busca si ya existe una Categoria 
 export const SearchCategoryId = async (id_categ) => {
 
     const [rows] = await pool.query('SELECT * FROM category WHERE id_category = ?', [id_categ])

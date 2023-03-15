@@ -10,6 +10,7 @@ import loginRoutes from './routes/login.routes.js'
 import RegisterRoutes from './routes/register.router.js'
 import categoryRoutes from './routes/category.routes.js';
 import imag_categoryRoutes from './routes/imag_category.routes.js';
+import productRoutes from './routes/product.routes.js';
 
 const app = express()
 
@@ -35,6 +36,7 @@ app.use(loginRoutes)
 app.use(RegisterRoutes) 
 app.use(categoryRoutes) 
 app.use(imag_categoryRoutes) 
+app.use(productRoutes)
 
 app.listen(PORT)
 console.log('server running in the port', PORT)
