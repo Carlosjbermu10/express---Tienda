@@ -1,12 +1,12 @@
 import fs from 'fs-extra';
 
 import { SearchCategoryId, RegisterImagCategory, SearchImagCategoryId, ReturnImagCategoryId_public,
-    DeleteImagCategoryId} from '../services/imag_category.services.js';
+    DeleteImagCategoryId} from '../../services/imag/imag_category.services.js';
 
-import { uploadClo, deleteClo } from '../helpers/cloudinary.js';
+import { uploadClo, deleteClo } from '../../helpers/cloudinary.js';
 
 //IMPORTAMOS E UTILIZAMOS CLOUDINARY
-import { cloud } from '../helpers/cloudinary.js';
+import { cloud } from '../../helpers/cloudinary.js';
 
 
 export const getImagCategory = async (req,res) => {

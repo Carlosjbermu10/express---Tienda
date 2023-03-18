@@ -15,7 +15,7 @@ export const postProduct = async (req,res) => {
         
         //se reciben las variables en el req.body
         const { body } = req
-        if (!body.name_product || !body.description_product || !body.amount_product) {
+        if (!body.name_product || !body.description_product || !body.price_product || !body.amount_product) {
             return res.send({ status:"mal",
             description:"le falto ingresar un dato",
             })
@@ -41,6 +41,7 @@ export const postProduct = async (req,res) => {
         const prod = {
             name: body.name_product,
             description: body.description_product,
+            price: body.price_product,
             amount: body.amount_product,
             id_cate: id_categ
         };

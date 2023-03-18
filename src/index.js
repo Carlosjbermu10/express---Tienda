@@ -7,10 +7,11 @@ import { PORT } from './config.js';
 
 //importamos las rutas 
 import loginRoutes from './routes/users/login.routes.js'
-import RegisterRoutes from './routes/users/register.router.js'
+import RegisterRoutes from './routes/users/register.routes.js'
 import categoryRoutes from './routes/category.routes.js';
-import imag_categoryRoutes from './routes/imag_category.routes.js';
+import imag_categoryRoutes from './routes/imag/imag_category.routes.js';
 import productRoutes from './routes/product.routes.js';
+import imag_productRoutes from './routes/imag/imag_product.routes.js';
 
 const app = express()
 
@@ -37,6 +38,8 @@ app.use(RegisterRoutes)
 app.use(categoryRoutes) 
 app.use(imag_categoryRoutes) 
 app.use(productRoutes)
+app.use(imag_productRoutes)
+
 
 app.listen(PORT)
 console.log('server running in the port', PORT)

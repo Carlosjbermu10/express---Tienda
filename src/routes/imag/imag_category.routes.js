@@ -1,10 +1,11 @@
 import { Router} from 'express';
-import { getImagCategory, postImagCategory, deleteImagCategory } from '../controllers/imag_category.controller.js';
+import { getImagCategory, postImagCategory, deleteImagCategory } 
+from '../../controllers/imag/imag_category.controller.js';
 
 //IMPORTAMOS LOS MIDDLWARE
 
 //middlware de multer
-import { upload } from '../middlware/multer.js';
+import { upload } from '../../middlware/multer.js';
 
 const router = Router()
 

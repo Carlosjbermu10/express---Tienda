@@ -27,16 +27,19 @@ export const RegisterProduct = async (prod) => {
 
     const name = prod.name
     const description = prod.description
-    const amount = prod.amount
     const id_cate = prod.id_cate
+    const price = prod.price
+    const amount = prod.amount
+    
 
     const [rows] = await pool.query
-    ('INSERT INTO product (name_product, description_product, amount_product, date, id_category) VALUES(?,?,?,CURDATE (),?)',
-    [name, description, amount, id_cate])
+    ('INSERT INTO product (name_product, description_product,  date, id_category, price_product, amount_product) VALUES(?,?,CURDATE (),?,?,?)',
+    [name, description, id_cate, price, amount])
     const result = {
         id: rows.insertId,
         name,
         description,
+        price,
         amount,
         id_cate
     }
