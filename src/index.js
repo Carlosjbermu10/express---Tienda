@@ -1,6 +1,7 @@
 import  express  from 'express';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 //importamos las variables de entorno
 import { PORT } from './config.js';
@@ -16,6 +17,7 @@ import carRoutes from './routes/car.routes.js';
 import buyRoutes from './routes/buy.routes.js';
 
 const app = express()
+app.use(cors())
 
 //para procesar datos enviados desde el form
 app.use(express.urlencoded({extended:false}))
