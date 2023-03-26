@@ -39,5 +39,8 @@ router.post('/ima', upload, async (req, res) => {
         console.log(error)
     }
 })
+router.get('/', (req, res) => {
+    res.send('ASDAdasfdsdfasadfasdf')
+})
 
 export default router 
