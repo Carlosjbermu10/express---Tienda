@@ -1,13 +1,23 @@
-import { SearchCategory,RegisterCategory } from '../services/category.services.js';
+import { getAllCategory, //Servicio que devuelve todas las categorias
+    SearchCategory, //Servicio que busca si ya existe una Categoria
+    RegisterCategory //Servicio para registrar una Categoria
+} from '../services/category.services.js';
 
 export const getCategory = async (req,res) => {
 
     try {
         
+        //se invoca el servicio que devuelve todos las categorias
+        const cate = await getAllCategory()
+
+        res.send({  status:"ok",
+                    description:"Lista de Categorias",
+                    data:cate})
+
     } catch (error) {
         
     }
-    res.send("Registrar Categoria")
+
 }
 
 

@@ -1,5 +1,5 @@
 import { Router} from 'express';
-import { getBuy, postBuy } from '../controllers/buy.controller.js';
+import { getBuy, getDetail_Buy, postBuy } from '../controllers/buy.controller.js';
 
 //IMPORTAMOS LOS MIDDLWARE
 
@@ -10,6 +10,7 @@ import { checkRolAdmin, checkRolUser } from '../middlware/roleAuth.js';
 const router = Router()
 
 router.get('/buy', checkAuth, getBuy) 
+router.get('/buy/detail/:id', checkAuth, getDetail_Buy)
 router.post('/buy/add/:id', checkAuth, postBuy)
 
 export default router 

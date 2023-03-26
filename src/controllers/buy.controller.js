@@ -1,6 +1,9 @@
 import { VerifyToken } from '../helpers/GenerateToken.js';
 
-import { SearchPayId, //Servicio que busca si ya existe un tipo de pago por el Id
+import { getAllBuyForUser, //Servicio que devuelve todas las compras del usuario que inicio seccion
+    SearchBuyId, //Servicio que busca si ya existe una Compra por el Id
+    getDetailBuy, //Servicio que devuelve los detalles de una compra
+    SearchPayId, //Servicio que busca si ya existe un tipo de pago por el Id
     SearchUserId, //Servicio que busca si ya existe un usuario por el Id
     Total_Buy, //Servicio que devuelve el monto total a pagar en una compra
     RegisterBuy, //Servicio que registra una compra
@@ -11,7 +14,41 @@ import { SearchPayId, //Servicio que busca si ya existe un tipo de pago por el I
 export const getBuy = async (req,res) => {
 
     try {
-        res.send("Registrar Categoria")
+
+        //Se invoca a el metodo que devuelve todas las compras de el usuario registrado
+        const allbuyUser = await getAllBuyForUser()
+
+        res.send({  status:"ok",
+                    description:"Lista de Compras",
+                    data:allbuyUser})
+
+    } catch (error) {
+        
+    }
+    
+}
+
+export const getDetail_Buy = async (req,res) => {
+
+    try {
+
+        // se reciben la variable que viene por parametros
+        const id_buy = req.params.id
+        //Se comprueba si ya existe esa compra
+        const search_buy = await SearchBuyId(id_buy)
+        if (search_buy == 0){
+            return res.send({ status:"mal",
+            description:"Compra no registrada",
+            })
+        }
+
+        //Se invoca a el metodo que devuelve todas los detalles de una compra
+        const detail_buy = await getDetailBuy()
+
+        res.send({  status:"ok",
+                    description:"Detalles de compra",
+                    data:detail_buy})
+
     } catch (error) {
         
     }

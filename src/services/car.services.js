@@ -4,9 +4,12 @@ import { pool } from '../database/db.js';
 export const getCar_Users_Products = async(id_users) => {
     
     const [rows] = await pool.query(`SELECT 
-        p.name_product, p.description_product, p.date, p.price_product, c.amount_car
-        FROM car as c inner join product as p
-        where id_users = ? and  c.id_product = p.id_product;`, 
+    p.id_product, p.name_product, p.description_product, p.date, p.price_product, c.amount_car, i_p.url_imag
+    FROM imag_product as i_p 
+    inner join product as p
+    on p.id_product = i_p.id_product
+    inner join car as c
+    where id_users = 1 and  c.id_product = p.id_product;`, 
     [id_users])
     return rows
 }

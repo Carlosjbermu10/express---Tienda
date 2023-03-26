@@ -4,9 +4,12 @@ import { pool } from '../database/db.js';
 export const getAllProduct = async() => {
     
     const [rows] = await pool.query(`SELECT 
-    p.name_product, p.description_product, p.date, p.price_product, c.name_category
-    FROM product as p inner join category as c
-    on  p.id_category = c.id_category;`)
+    p.id_product , p.name_product, p.description_product, p.date, p.price_product, c.name_category, i_p.url_imag
+    FROM product as p 
+    inner join category as c
+    on  p.id_category = c.id_category
+    inner join imag_product as i_p
+    on i_p.id_product = p.id_product;`)
     return rows
 }
 
@@ -18,6 +21,17 @@ export const SearchCategoryId = async (id_categ) => {
     
 }
 
+//Servicio que devuelve todos los productos de una categoria
+export const getAllProductForIdCategory = async(id_categ) => {
+    
+    const [rows] = await pool.query(`SELECT 
+    p.id_product , p.name_product, p.description_product, p.date, p.price_product, i_p.url_imag
+    FROM product as p
+    inner join imag_product as i_p
+    WHERE id_category = ? and i_p.id_product = p.id_product;`, [id_categ])
+    return rows
+
+}
 
 //Servicio que busca si ya existe un Producto
 export const SearchProduct = async (name_product) => {

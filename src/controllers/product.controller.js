@@ -1,4 +1,5 @@
 import { getAllProduct, //Servicio que devuelve todos los productos
+    getAllProductForIdCategory, //Servicio que devuelve todos los productos de una categoria
     SearchCategoryId, //Servicio que busca si ya existe una Categoria por su Id
     SearchProduct , //Servicio que busca si ya existe un Producto
     RegisterProduct //Servicio para registrar un Producto
@@ -7,12 +8,41 @@ import { getAllProduct, //Servicio que devuelve todos los productos
 export const getProduct = async (req,res) => {
     
     try {
+
         //se invoca el servicio que devuelve todos los productos
         const pro = await getAllProduct()
 
         res.send({  status:"ok",
                     description:"Lista de productos",
                     data:pro})
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+export const getProductForIdCategory = async (req,res) => {
+    
+    try {
+
+        // se reciben la variable que viene por parametros
+        const id_categ = req.params.id
+
+        //Se comprueba si ya existe la categoria
+        const search = await SearchCategoryId(id_categ)
+        if (search === 0){
+            return res.send({ status:"mal",
+            description:"Categoria no registrada",
+            })
+        }
+
+        //se invoca el servicio que devuelve todos los productos
+        const prod = await getAllProductForIdCategory(id_categ)
+
+        res.send({  status:"ok",
+                    description:"Lista de productos",
+                    data:prod})
     } catch (error) {
         console.log(error)
     }

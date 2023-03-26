@@ -1,9 +1,37 @@
 import { pool } from '../database/db.js';
 
-//Servicio que devuelve todas las categorias
-export const getAllCategory = async() => {
+//Servicio que devuelve todas las compras del usuario que inicio seccion
+export const getAllBuyForUser = async() => {
     
+    const [rows] = await pool.query(`select 
+    b.id_buy, b.total, b.date, pa.name_pay
+    from users as u
+    inner join buys as b
+    on u.id_users = b.id_users
+    inner join pay as pa
+    on b.id_pay = pa.id_pay; `)
+    return rows
+
+}
+
+//Servicio que busca si ya existe una Compra por el Id
+export const SearchBuyId = async (id) => {
+
+    const [rows] = await pool.query('SELECT * FROM buys WHERE id_buy = ?', [id])
+    return rows.length
     
+}
+
+//Servicio que devuelve los detalles de una compra
+export const getDetailBuy = async() => {
+    
+    const [rows] = await pool.query(`select 
+    d_b.id_detail, d_b.name, d_b.price, d_b.amount
+    from buys as b
+    inner join detail_buys as d_b
+    on b.id_buy = d_b.id_buys;`)
+    return rows
+
 }
 
 //Servicio que busca si ya existe un tipo de pago por el Id
