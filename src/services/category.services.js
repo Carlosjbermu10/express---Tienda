@@ -1,6 +1,7 @@
 import { pool } from '../database/db.js';
 
-export const getSerRegister = async() => {
+//Servicio que devuelve todas las categorias
+export const getAllCategory = async() => {
     
     
 }

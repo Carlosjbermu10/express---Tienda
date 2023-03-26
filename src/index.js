@@ -13,6 +13,7 @@ import imag_categoryRoutes from './routes/imag/imag_category.routes.js';
 import productRoutes from './routes/product.routes.js';
 import imag_productRoutes from './routes/imag/imag_product.routes.js';
 import carRoutes from './routes/car.routes.js';
+import buyRoutes from './routes/buy.routes.js';
 
 const app = express()
 
@@ -41,6 +42,7 @@ app.use(imag_categoryRoutes)
 app.use(productRoutes)
 app.use(imag_productRoutes)
 app.use(carRoutes)
+app.use(buyRoutes)
 
 app.listen(PORT)
 console.log('server running in the port', PORT)

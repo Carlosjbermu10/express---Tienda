@@ -2,6 +2,11 @@ import { SearchCategory,RegisterCategory } from '../services/category.services.j
 
 export const getCategory = async (req,res) => {
 
+    try {
+        
+    } catch (error) {
+        
+    }
     res.send("Registrar Categoria")
 }
 

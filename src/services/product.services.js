@@ -1,8 +1,13 @@
 import { pool } from '../database/db.js';
 
-export const getSerRegister = async() => {
+//Servicio que devuelve todos los productos
+export const getAllProduct = async() => {
     
-    
+    const [rows] = await pool.query(`SELECT 
+    p.name_product, p.description_product, p.date, p.price_product, c.name_category
+    FROM product as p inner join category as c
+    on  p.id_category = c.id_category;`)
+    return rows
 }
 
 //Servicio que busca si ya existe una Categoria por su Id

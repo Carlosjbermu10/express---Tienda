@@ -1,8 +1,14 @@
 import { pool } from '../database/db.js';
 
-export const getSerRegister = async() => {
+//Servicio que devuelve los productos que tiene el usuario que inicio seccion en el carrito
+export const getCar_Users_Products = async(id_users) => {
     
-    
+    const [rows] = await pool.query(`SELECT 
+        p.name_product, p.description_product, p.date, p.price_product, c.amount_car
+        FROM car as c inner join product as p
+        where id_users = ? and  c.id_product = p.id_product;`, 
+    [id_users])
+    return rows
 }
 
 //Servicio que busca si ya existe un Producto

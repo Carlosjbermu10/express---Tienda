@@ -1,5 +1,5 @@
 import { Router} from 'express';
-import { getProduct, postProduct } from '../controllers/product.controller.js';
+import { getBuy, postBuy } from '../controllers/buy.controller.js';
 
 //IMPORTAMOS LOS MIDDLWARE
 
@@ -9,7 +9,7 @@ import { checkRolAdmin, checkRolUser } from '../middlware/roleAuth.js';
 
 const router = Router()
 
-router.get('/product', checkAuth, getProduct) 
-router.post('/product/add/:id', checkAuth, postProduct)
+router.get('/buy', checkAuth, getBuy) 
+router.post('/buy/add/:id', checkAuth, postBuy)
 
 export default router 

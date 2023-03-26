@@ -1,8 +1,22 @@
-import { SearchCategoryId, SearchProduct , RegisterProduct } from '../services/product.services.js';
+import { getAllProduct, //Servicio que devuelve todos los productos
+    SearchCategoryId, //Servicio que busca si ya existe una Categoria por su Id
+    SearchProduct , //Servicio que busca si ya existe un Producto
+    RegisterProduct //Servicio para registrar un Producto
+} from '../services/product.services.js';
 
 export const getProduct = async (req,res) => {
     
-    res.send("Registrar Producto")
+    try {
+        //se invoca el servicio que devuelve todos los productos
+        const pro = await getAllProduct()
+
+        res.send({  status:"ok",
+                    description:"Lista de productos",
+                    data:pro})
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 
