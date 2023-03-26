@@ -4,7 +4,8 @@ import { SearchPayId, //Servicio que busca si ya existe un tipo de pago por el I
     SearchUserId, //Servicio que busca si ya existe un usuario por el Id
     Total_Buy, //Servicio que devuelve el monto total a pagar en una compra
     RegisterBuy, //Servicio que registra una compra
-    Data_Products //Servicio que devuelve los datos de los productos que se estan comprando
+    Data_Products, //Servicio que devuelve los datos de los productos que se estan comprando
+    RegisterDetail_buy //Servicio que registra los detalles de una compra
     } from '../services/buy.services.js';
 
 export const getBuy = async (req,res) => {
@@ -55,22 +56,27 @@ export const postBuy = async (req,res) => {
             id_pay: id_pay
         };
 
-        //se invoca el servicio para registrar un usuario
+        //se invoca el servicio para registrar la compra de un usuario
         const buy = await RegisterBuy(bu)
 
         //Se invoca el servicio que devuelve los productos que se estan comprando
         let produ_buy = await Data_Products(decodificada.id)
-        const buuy = produ_buy.map(element => {
+        const all_produ = produ_buy.map(element => {
             return{ 
-                id_id_buy : buy.id,
-                
+                id_buys: buy.id,
+                id_product: element.id_product,
+                name: element.name_product,
+                price: element.price_product,
+                amount: element.amount_car
             }
         })
-        console.log(buuy)
 
-        /*res.send({  status:"ok",
-                    description:"Categoria registrada correctamente",
-                    data:buy})*/
+        //Se invoca el servicio que registra los detalles de una compra
+        const detail_buy = await  RegisterDetail_buy(all_produ)
+
+        res.send({  status:"ok",
+                    description:"Compra registrada correctamente",
+                    data:buy})
         
     } catch (error) {
         console.log(error)

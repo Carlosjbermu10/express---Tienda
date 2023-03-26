@@ -61,3 +61,31 @@ export const Data_Products = async (id) => {
     return rows
     
 }
+
+//Servicio que registra los detalles de una compra
+export const RegisterDetail_buy = async (produ_buy) => {
+
+    produ_buy.forEach(async (element) => {
+
+        const id_buys = element.id_buys
+        const id_product = element.id_product
+        const name = element.name
+        const price = element.price
+        const amount = element.amount
+
+        const [rows] = await pool.query
+        ('INSERT INTO detail_buys (amount, price, id_buys, id_product, name) VALUES(?,?,?,?,?)',
+        [amount, price, id_buys, id_product, name])
+        const result = {
+            id: rows.insertId,
+            amount,
+            price,
+            id_buys,
+            id_product,
+            name
+        }
+        return result
+
+    })
+    
+}
