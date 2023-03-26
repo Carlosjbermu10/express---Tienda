@@ -3,17 +3,17 @@ import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
 //importamos las variables de entorno
-import { PORT } from './config.js';
+import { PORT } from './src/config.js';
 
 //importamos las rutas 
-import loginRoutes from './routes/users/login.routes.js'
-import RegisterRoutes from './routes/users/register.routes.js'
-import categoryRoutes from './routes/category.routes.js';
-import imag_categoryRoutes from './routes/imag/imag_category.routes.js';
-import productRoutes from './routes/product.routes.js';
-import imag_productRoutes from './routes/imag/imag_product.routes.js';
-import carRoutes from './routes/car.routes.js';
-import buyRoutes from './routes/buy.routes.js';
+import loginRoutes from './src/routes/users/login.routes.js'
+import RegisterRoutes from './src/routes/users/register.routes.js'
+import categoryRoutes from './src/routes/category.routes.js';
+import imag_categoryRoutes from './src/routes/imag/imag_category.routes.js';
+import productRoutes from './src/routes/product.routes.js';
+import imag_productRoutes from './src/routes/imag/imag_product.routes.js';
+import carRoutes from './src/routes/car.routes.js';
+import buyRoutes from './src/routes/buy.routes.js';
 
 const app = express()
 
