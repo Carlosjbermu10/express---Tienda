@@ -21,5 +21,7 @@ export const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME
 export const CLOUDINARY_API_KEY = process.env.CLOUDINARY_API_KEY 
 export const CLOUDINARY_API_SECRET = process.env.CLOUDINARY_API_SECRET 
 
-//console.log(process.env)
-
+//paypal
+export const PAYPAL_API_CLIENT = process.env.PAYPAL_API_CLIENT
+export const PAYPAL_API_SECRET = process.env.PAYPAL_API_SECRET
+export const PAYPAL_API = process.env.PAYPAL_API

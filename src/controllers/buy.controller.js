@@ -108,6 +108,9 @@ export const postBuy = async (req,res) => {
             }
         })
 
+        //Se invoca a el metodo de pago 
+        
+
         //Se invoca el servicio que registra los detalles de una compra
         const detail_buy = await  RegisterDetail_buy(all_produ)
 

@@ -18,7 +18,7 @@ export const upload = multer({
     dest: path.join(__dirname, '../public/uploads'),
     limits: {fileSize: 1000000},
     fileFilter: (req,file,cb) => {
-        const filetypes = /jpeg|jpg|png/
+        const filetypes = /jpeg|jpg|png|webp|jfit/
         const minetype = filetypes.test(file.mimetype)
         const extname = filetypes.test(path.extname(file.originalname))
         if (minetype && extname) {
