@@ -14,6 +14,16 @@ export const getCar_Users_Products = async(id_users) => {
     return rows
 }
 
+//Servicio que devuelve el monto total a pagar en una compra
+export const Total_Buy = async (id) => {
+
+    const [rows] = await pool.query(`SELECT sum(p.price_product* c.amount_car) as total
+        FROM car as c inner join product as p
+        where id_users = ? and  c.id_product = p.id_product;`, [id])
+    return rows[0]
+    
+}
+
 //Servicio que busca si ya existe un Producto
 export const SearchProductId = async (id_prod) => {
 

@@ -1,6 +1,7 @@
 import { VerifyToken2 } from '../helpers/GenerateToken.js';
 
 import { getCar_Users_Products, //Servicio que devuelve los productos que tiene el usuario que inicio seccion en el carrito
+    Total_Buy, //Servicio que devuelve el monto total a pagar en una compra
     SearchProductId, //Servicio que busca si ya existe un Producto
     SearchUserId , //Servicio que busca si ya existe un usuario por el Id
     SearchProduct_Car, //Servicio que busca si ya existe un Producto en un carrito de una persona
@@ -26,9 +27,14 @@ export const getCar = async (req,res) => {
         //Se buscan todos los productos que estan el carrito de compra del usuario que inicio seccion
         const search_car = await getCar_Users_Products(decodificada.id)
 
+        //Se invoca el metodo que devuelve el total de los productos que estan en el carrito
+        const total = await Total_Buy(decodificada.id)
+
         res.send({  status:"ok",
                         description:"Productos que estan en el carrito de compra",
-                        data:search_car})
+                        data:search_car,
+                        total: total
+                    })
 
     } catch (error) {
         console.log(error)
