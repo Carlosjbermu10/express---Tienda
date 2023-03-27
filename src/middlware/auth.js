@@ -5,10 +5,10 @@ import {
 import { VerifyToken } from '../helpers/GenerateToken.js';
 
 export const checkAuth = async (req,res,next) => {
+    const token = req.header("x-auth-token");
     
     if (req.cookies.jwt) {
         try {
-
             const decodificada = await VerifyToken(req)
             const datos = await returnID(decodificada.id)
             if (!datos) {return next()}
@@ -19,7 +19,15 @@ export const checkAuth = async (req,res,next) => {
             console.log(error)
         }    
     }else{
-        res.redirect('/login')
+        if (token) {
+            const decodificada = await VerifyToken(token)
+            const datos = await returnID(decodificada.id)
+            if (!datos) {return next()}
+            req.user = datos[0]
+            return next()
+        } else {
+            res.redirect('/login')
+        }
     }
 
 }

@@ -90,6 +90,17 @@ export const Data_Products = async (id) => {
     
 }
 
+//Servicio que deletea el carrito de un usuario luego de la compra
+export const deletecar = async (id) => {
+
+    const [rows] = await pool.query(`SELECT 
+    p.id_product, p.name_product, p.price_product, c.amount_car
+    FROM car as c inner join product as p
+    where id_users = ? and  c.id_product = p.id_product;`, [id])
+    return rows
+    
+}
+
 //Servicio que registra los detalles de una compra
 export const RegisterDetail_buy = async (produ_buy) => {
 
@@ -112,6 +123,11 @@ export const RegisterDetail_buy = async (produ_buy) => {
             id_product,
             name
         }
+
+        const [rowss] = await pool.query
+        (`update product as p set amount_product = p.amount_product - ? where p.id_product = ?;`,
+        [amount, id_product])
+
         return result
 
     })

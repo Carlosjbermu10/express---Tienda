@@ -1,5 +1,7 @@
 import { VerifyToken } from '../helpers/GenerateToken.js';
 
+import { paypal } from '../helpers/paypal.js';
+
 import { getAllBuyForUser, //Servicio que devuelve todas las compras del usuario que inicio seccion
     SearchBuyId, //Servicio que busca si ya existe una Compra por el Id
     getDetailBuy, //Servicio que devuelve los detalles de una compra
@@ -8,6 +10,7 @@ import { getAllBuyForUser, //Servicio que devuelve todas las compras del usuario
     Total_Buy, //Servicio que devuelve el monto total a pagar en una compra
     RegisterBuy, //Servicio que registra una compra
     Data_Products, //Servicio que devuelve los datos de los productos que se estan comprando
+    deletecar, //Servicio que deletea el carrito de un usuario luego de la compra
     RegisterDetail_buy //Servicio que registra los detalles de una compra
     } from '../services/buy.services.js';
 
@@ -82,6 +85,7 @@ export const postBuy = async (req,res) => {
             })
         }
 
+        //Se invoca el metodo que devuelve el total de los productos que estan en el carrito
         const total = await Total_Buy(decodificada.id)
 
         console.log(total)
@@ -109,8 +113,11 @@ export const postBuy = async (req,res) => {
         })
 
         //Se invoca a el metodo de pago 
-        
+        //const pago = await paypal(req, total.total)
 
+        //Se invoca el metodo que deletea el carito de compra del usuario
+        const del_car = await deletecar(decodificada.id)
+        
         //Se invoca el servicio que registra los detalles de una compra
         const detail_buy = await  RegisterDetail_buy(all_produ)
 
