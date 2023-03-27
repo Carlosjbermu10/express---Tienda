@@ -11,5 +11,6 @@ const router = Router()
 
 router.get('/car', checkAuth, getCar) 
 router.post('/car/add/:id', checkAuth, postCar)
+//router.post('/car/add/:id', checkAuth, postCar)
 
 export default router 

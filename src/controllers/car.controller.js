@@ -1,4 +1,4 @@
-import { VerifyToken } from '../helpers/GenerateToken.js';
+import { VerifyToken2 } from '../helpers/GenerateToken.js';
 
 import { getCar_Users_Products, //Servicio que devuelve los productos que tiene el usuario que inicio seccion en el carrito
     SearchProductId, //Servicio que busca si ya existe un Producto
@@ -12,7 +12,8 @@ export const getCar = async (req,res) => {
     try {
 
         //Se busca el id del usuario que inicio seccion por el token que esta en la cookie
-        const decodificada = await VerifyToken(req)
+        const decodificada = await VerifyToken2(req.header("x-auth-token"))
+
 
         //Se comprueba si ya existe el usuario
         const search_user = await SearchUserId(decodificada.id)

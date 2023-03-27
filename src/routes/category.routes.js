@@ -9,7 +9,7 @@ import { checkRolAdmin, checkRolUser } from '../middlware/roleAuth.js';
 
 const router = Router()
 
-router.get('/category', checkAuth, getCategory) 
+router.get('/category', getCategory) 
 router.post('/category/add', checkAuth, postCategory)
 
 export default router 

@@ -24,3 +24,12 @@ export const VerifyToken = async (req) => {
         return null
     }
 }
+
+export const VerifyToken2 = async (req) => {
+    try {
+        return promisify(jwt.verify)(req, JWT_SECRET)
+    } catch (error) {
+        console.log(error)
+        return null
+    }
+}
