@@ -18,7 +18,7 @@ export const getCar = async (req,res) => {
         const search_user = await SearchUserId(decodificada.id)
         if (search_user == 0){
             return res.send({ status:"mal",
-            description:"usuario No registrado",
+            description:"Usuario No registrado",
             })
         }
 
