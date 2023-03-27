@@ -67,3 +67,20 @@ export const RegisterCar = async (ca) => {
     }
     return result
 }
+
+//Servicio que busca si ya existe un carrito por su id
+export const SearchCarId = async (id_car) => {
+
+    const [rows] = await pool.query('SELECT * FROM car WHERE id_car = ?', [id_car])
+    return rows.length
+    
+}
+
+//Servico para eliminar un producto de un carrito
+//Servicio que busca si ya existe un carrito por su id
+export const Delete_Car = async (id_car) => {
+
+    const [rows] = await pool.query('DELETE FROM car WHERE id_car = ?', [id_car])
+    return rows
+    
+}

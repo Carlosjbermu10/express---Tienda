@@ -1,5 +1,5 @@
 import { Router} from 'express';
-import { getCar, postCar } from '../controllers/car.controller.js';
+import { getCar, postCar, deleteCar } from '../controllers/car.controller.js';
 
 //IMPORTAMOS LOS MIDDLWARE
 
@@ -11,6 +11,6 @@ const router = Router()
 
 router.get('/car', checkAuth, getCar) 
 router.post('/car/add/:id', checkAuth, postCar)
-//router.post('/car/add/:id', checkAuth, postCar)
+router.delete('/car/delete/:id', checkAuth, deleteCar)
 
 export default router 
