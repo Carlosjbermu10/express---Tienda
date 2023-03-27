@@ -1,6 +1,10 @@
 import bcryptjs from 'bcryptjs';
 import { RegisterUser, SearchUser } from '../../services/users/register.services.js';
 
+import { TokenSign } from '../../helpers/GenerateToken.js';
+
+import { cookiesOp } from '../../helpers/GenerateCookie.js';
+
 export const getRegister = (req,res) => {
     
     res.send("Registrar Usuario")
@@ -40,9 +44,16 @@ export const postRegister = async (req,res) => {
         //se invoca el servicio para registrar un usuario
         const reg = await RegisterUser(regi)
 
+        //Inicio de sesion
+        //se crea el token
+        const token = await TokenSign(reg)
+        const cookiesOptions = cookiesOp
+        res.cookie('jwt', token, cookiesOptions)
+
         res.send({  status:"ok",
                     description:"usuario registrado correctamente",
-                    data:reg})
+                    data:reg,
+                    token:token})
         
     } catch (error) {
         console.log(error)

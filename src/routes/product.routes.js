@@ -9,8 +9,8 @@ import { checkRolAdmin, checkRolUser } from '../middlware/roleAuth.js';
 
 const router = Router()
 
-router.get('/product', checkAuth, getProduct) 
-router.get('/product/category/:id', checkAuth, getProductForIdCategory) 
-router.post('/product/add/:id', checkAuth, postProduct)
+router.get('/product', getProduct) 
+router.get('/product/category/:id', getProductForIdCategory) 
+router.post('/product/add/:id', checkAuth, checkRolAdmin, postProduct)
 
 export default router 
