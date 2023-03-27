@@ -112,9 +112,6 @@ export const postBuy = async (req,res) => {
             }
         })
 
-        //Se invoca a el metodo de pago 
-        //const pago = await paypal(req, total.total)
-
         //Se invoca el metodo que deletea el carito de compra del usuario
         const del_car = await deletecar(decodificada.id)
         

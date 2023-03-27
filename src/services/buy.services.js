@@ -93,10 +93,7 @@ export const Data_Products = async (id) => {
 //Servicio que deletea el carrito de un usuario luego de la compra
 export const deletecar = async (id) => {
 
-    const [rows] = await pool.query(`SELECT 
-    p.id_product, p.name_product, p.price_product, c.amount_car
-    FROM car as c inner join product as p
-    where id_users = ? and  c.id_product = p.id_product;`, [id])
+    const [rows] = await pool.query(`delete from car where id_users =?;`, [id])
     return rows
     
 }
