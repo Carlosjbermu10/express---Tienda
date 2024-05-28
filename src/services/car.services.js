@@ -4,7 +4,7 @@ import { pool } from "../database/db.js";
 export const getCar_Users_Products = async (id_users) => {
   const [rows] = await pool.query(
     `SELECT 
-    p.id_product, p.name_product, p.description_product, p.date, p.price_product, c.amount_car, i_p.url_imag
+    c.id_car, p.id_product, p.name_product, p.description_product, p.date, p.price_product, c.amount_car, i_p.url_imag
     FROM imag_product as i_p 
     inner join product as p
     on p.id_product = i_p.id_product
@@ -80,8 +80,7 @@ export const SearchCarId = async (id_car) => {
 };
 
 //Servico para eliminar un producto de un carrito
-//Servicio que busca si ya existe un carrito por su id
-export const Delete_Car = async (id_car) => {
+export const Delete_Prod_Car = async (id_car) => {
   const [rows] = await pool.query("DELETE FROM car WHERE id_car = ?", [id_car]);
   return rows;
 };

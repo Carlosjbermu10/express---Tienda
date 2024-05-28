@@ -8,7 +8,7 @@ import {
   SearchProduct_Car, //Servicio que busca si ya existe un Producto en un carrito de una persona
   RegisterCar, //Servicio para añadir un producto a un carrito de compra
   SearchCarId, //Servicio que busca si ya existe un carrito por su id
-  Delete_Car, //Servico para eliminar un producto de un carrito
+  Delete_Prod_Car, //Servico para eliminar un producto de un carrito
 } from "../services/car.services.js";
 
 export const getCar = async (req, res) => {
@@ -62,8 +62,8 @@ export const postCar = async (req, res) => {
       return res.send({ status: "mal", description: "Producto no registrado" });
     }
 
-    //Se busca el id del usuario que inicio seccion por el token que esta en la cookie
-    const decodificada = await VerifyToken2(req.header("x-auth-token"));
+    //Se busca el id del usuario que inicio seccion, por el token que esta en la cookie
+    const decodificada = await VerifyToken(req);
 
     //Se comprueba si ya existe el usuario
     const search_user = await SearchUserId(decodificada.id);
@@ -76,7 +76,7 @@ export const postCar = async (req, res) => {
     if (search_car_prod > 0) {
       return res.send({
         status: "mal",
-        description: "El producto ya esta añadido a carrito",
+        description: "El producto ya esta añadido a el carrito",
       });
     }
 
@@ -99,21 +99,27 @@ export const postCar = async (req, res) => {
     console.log(error);
   }
 };
-export const deleteCar = async (req, res) => {
+export const deleteProdCar = async (req, res) => {
   try {
     // se reciben la variable que viene por parametros
     const id_car = req.params.id;
 
-    //Se comprueba si ya existe el el carrito
+    //Se comprueba si ya existe el id del carrito
     const search_car = await SearchCarId(id_car);
     if (search_car === 0) {
-      return res.send({ status: "mal", description: "Producto no registrado" });
+      return res.send({
+        status: "mal",
+        description: "Producto no guardado en el carrito",
+      });
     }
 
     //se invoca el servicio para eliminar un producto del carrito
-    const dele_car = await Delete_Car(id_car);
+    const dele_car = await Delete_Prod_Car(id_car);
 
-    res.send({ status: "ok", description: "Producto eliminado correctamente" });
+    res.send({
+      status: "ok",
+      description: "Producto eliminado del carrito correctamente",
+    });
   } catch (error) {
     console.log(error);
   }
